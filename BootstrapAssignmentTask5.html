@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Task5</title>
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #f5f5f5;
+      font-family: Arial, sans-serif;
+      padding: 40px 20px;
+    }
+    .form-container {
+      max-width: 400px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .form-group {
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #333;
+    }
+    .form-group .input-wrapper {
+      position: relative;
+    }
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 10px 40px 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
+    .form-group .error-icon {
+      display: none;
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #e3342f;
+      font-size: 1.2rem;
+    }
+    .form-group .error-msg {
+      display: none;
+      margin-top: 4px;
+      color: #e3342f;
+      font-size: 0.9rem;
+    }
+    .form-group.has-error input,
+    .form-group.has-error select {
+      border-color: #e3342f !important;
+    }
+    .form-group.has-error .error-icon {
+      display: block;
+    }
+    .form-group.has-error .error-msg {
+      display: block;
+    }
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      background: #e3342f;
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .submit-btn:hover {
+      background: #cc2a25;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <form id="myForm" novalidate>
+      
+      <div class="form-group" data-name="Name">
+        <label for="name">Name</label>
+        <div class="input-wrapper">
+          <input id="name" type="text" placeholder="Enter your name" required>
+          <i class="fas fa-exclamation-circle error-icon"></i>
+        </div>
+        <div class="error-msg">Name is required</div>
+      </div>
+
+      
+      <div class="form-group" data-name="Email">
+        <label for="email">Email</label>
+        <div class="input-wrapper">
+          <input id="email" type="email" placeholder="Enter your email" required>
+          <i class="fas fa-exclamation-circle error-icon"></i>
+        </div>
+        <div class="error-msg">Email is required</div>
+      </div>
+
+      
+      <div class="form-group" data-name="Password">
+        <label for="password">Password</label>
+        <div class="input-wrapper">
+          <input id="password" type="password" placeholder="Enter a password" required>
+          <i class="fas fa-exclamation-circle error-icon"></i>
+        </div>
+        <div class="error-msg">Password is required</div>
+      </div>
+
+      
+      <div class="form-group">
+        <label for="hobbies">Hobbies</label>
+        <div class="input-wrapper">
+          <select id="hobbies">
+            <option value="">Select a hobby</option>
+            <option>Reading</option>
+            <option>Traveling</option>
+            <option>Gaming</option>
+            <option>Cooking</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('myForm')
+      .addEventListener('submit', function(e) {
+        e.preventDefault();
+        let formValid = true;
+
+        
+        this.querySelectorAll('input[required]')
+          .forEach(field => {
+            const grp = field.closest('.form-group');
+            if (!field.value.trim()) {
+              grp.classList.add('has-error');
+              formValid = false;
+            } else {
+              grp.classList.remove('has-error');
+            }
+          });
+
+        if (formValid) {
+          
+          alert('Form submitted!');
+          
+        }
+      });
+  </script>
+</body>
+</html>

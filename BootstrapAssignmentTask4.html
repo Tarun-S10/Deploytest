@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Task4</title>
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      background: #f2f2f2;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .form-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #e8e8e8;
+      padding: 20px;
+      border-radius: 6px;
+    }
+    .form-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .form-row label {
+      flex: 0 0 130px;
+      font-weight: bold;
+      color: #333;
+    }
+    .input-wrapper {
+      position: relative;
+      flex: 1;
+    }
+    .input-wrapper input,
+    .input-wrapper select,
+    .input-wrapper textarea {
+      width: 100%;
+      padding: 8px 12px;
+      padding-left: 36px;            
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #fff;
+      font-size: 0.95rem;
+    }
+    .input-wrapper textarea {
+      resize: vertical;
+      min-height: 80px;
+      padding-top: 10px;
+    }
+    .input-wrapper .fa {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #666;
+      font-size: 1.1rem;
+    }
+    
+    .radio-group {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .radio-group label {
+      font-weight: normal;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .submit-btn {
+      background: #f0ad4e;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .submit-btn .fa-paper-plane {
+      font-size: 1.1rem;
+    }
+
+  .has-error input,
+  .has-error select,
+  .has-error textarea {
+  border: 2px solid #c00 !important;
+}
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <form>
+      
+      <div class="form-row">
+        <label for="firstName">First Name</label>
+        <div class="input-wrapper">
+          <i class="fa fa-user"></i>
+          <input type="text" id="firstName" placeholder="First Name" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="lastName">Last Name</label>
+        <div class="input-wrapper">
+          <i class="fa fa-user"></i>
+          <input type="text" id="lastName" placeholder="Last Name" required>
+        </div>
+      </div>
+
+      
+      <div class="form-row">
+        <label for="email">E-Mail</label>
+        <div class="input-wrapper">
+          <i class="fa fa-envelope"></i>
+          <input type="email" id="email" placeholder="E-Mail Address" required>
+        </div>
+      </div>
+
+     
+      <div class="form-row">
+        <label for="phone">Phone #</label>
+        <div class="input-wrapper">
+          <i class="fa fa-phone"></i>
+          <input type="tel" id="phone" placeholder="(845) 555-1212" required>
+        </div>
+      </div>
+
+      
+      <div class="form-row">
+        <label for="address">Address</label>
+        <div class="input-wrapper">
+          <i class="fa fa-home"></i>
+          <input type="text" id="address" placeholder="Address" required>
+        </div>
+      </div>
+
+     
+      <div class="form-row">
+        <label for="city">City</label>
+        <div class="input-wrapper">
+          <i class="fa fa-home"></i>
+          <input type="text" id="city" placeholder="city" required>
+        </div>
+      </div>
+
+
+      <div class="form-row">
+        <label for="state">State</label>
+        <div class="input-wrapper">
+          <i class="fa fa-list"></i>
+          <select id="state">
+            <option disabled selected>Please select your state</option>
+            <option>Karnataka</option>
+            <option>Karnataka2</option>
+            <option>Karnataka3</option>
+            
+          </select>
+        </div>
+      </div>
+
+  
+      <div class="form-row">
+        <label>Do you have hosting?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="hosting" value="yes" /> Yes</label>
+          <label><input type="radio" name="hosting" value="no" /> No</label>
+        </div>
+      </div>
+
+
+      <div class="form-row">
+        <label for="projectDesc">Project Description</label>
+        <div class="input-wrapper">
+          <i class="fa fa-pencil-alt"></i>
+          <textarea id="projectDesc" placeholder="Project Description"></textarea>
+        </div>
+      </div>
+
+      
+      <div class="form-row" style="justify-content: flex-end;">
+        <button type="submit" class="submit-btn">
+          Send <i class="fa fa-paper-plane"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>
+<script>
+  document.querySelector('form').addEventListener('submit', function(e) {
+    e.preventDefault();  
+  
+    let formValid = true;
+  
+   
+    this.querySelectorAll('input[required], select[required], textarea[required]')
+      .forEach(field => {
+        const wrapper = field.closest('.input-wrapper') || field.parentNode;
+  
+        if (!field.value.trim()) {
+          wrapper.classList.add('has-error');
+          formValid = false;
+        } else {
+          wrapper.classList.remove('has-error');
+        }
+      });
+  
+    if (formValid) {
+      alert('Form is valid! Submitting…');
+    }
+  });
+  </script>
+  
